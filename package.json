@@ -1,0 +1,25 @@
+{
+  "name": "crud-with-express",
+  "version": "1.0.0",
+  "description": "CRUD is an acronym for Create, Read, Update and Delete. It is a set of operations we get servers to execute (POST, GET, PUT and DELETE requests respectively). This is what each operation does:\ncreate (POST) - Make something\nRead (GET)- Get something\nUpdate (PUT) - Change somethig",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@hapi/joi": "17.1.1",
+    "body-parser": "1.19.0",
+    "cors": "^2.8.5",
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "nodemon": "2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  },
+  "keywords": [
+    "crud",
+    "nodejs",
+    "express"
+  ]
+}
