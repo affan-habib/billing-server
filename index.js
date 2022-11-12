@@ -8,17 +8,37 @@ const courses = [
   {
     id: 1,
     masterServiceName: "BOOK NAME ONE",
-    tariffBaseAmount: 10,
+    tariffBaseAmount: 230,
   },
   {
     id: 2,
     masterServiceName: "BOOK NAME TWO",
-    tariffBaseAmount: 10,
+    tariffBaseAmount: 450,
   },
   {
     id: 3,
     masterServiceName: "BOOK NAME THREE",
-    tariffBaseAmount: 10,
+    tariffBaseAmount: 120,
+  },
+  {
+    id: 4,
+    masterServiceName: "BOOK NAME Four",
+    tariffBaseAmount: 375,
+  },
+  {
+    id: 5,
+    masterServiceName: "BOOK NAME Five",
+    tariffBaseAmount: 850,
+  },
+  {
+    id: 6,
+    masterServiceName: "BOOK NAME Six",
+    tariffBaseAmount: 70,
+  },
+  {
+    id: 7,
+    masterServiceName: "BOOK NAME Seven",
+    tariffBaseAmount: 45,
   },
 ];
 const patients = {
