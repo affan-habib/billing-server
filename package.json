@@ -1,25 +1,37 @@
 {
-  "name": "crud-with-express",
+  "name": "10-e-commerce-api",
   "version": "1.0.0",
-  "description": "CRUD is an acronym for Create, Read, Update and Delete. It is a set of operations we get servers to execute (POST, GET, PUT and DELETE requests respectively). This is what each operation does:\ncreate (POST) - Make something\nRead (GET)- Get something\nUpdate (PUT) - Change somethig",
-  "main": "src/index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@hapi/joi": "17.1.1",
-    "body-parser": "1.19.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "express": "4.17.1",
-    "lodash": "4.17.15",
-    "nodemon": "2.0.3"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.2.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.4.1",
+    "helmet": "^4.6.0",
+    "http-status-codes": "^2.1.4",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.8",
+    "morgan": "^1.10.0",
+    "validator": "^13.6.0",
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "nodemon": "1.18.4"
+    "nodemon": "^2.0.9"
   },
-  "keywords": [
-    "crud",
-    "nodejs",
-    "express"
-  ]
+  "engines": {
+    "node": "14.x"
+  }
 }
