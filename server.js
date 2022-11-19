@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/service-master/items', require('./routes/goalRoutes'));
+app.use('/api/customers', require('./routes/customerRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 
 // Serve frontend
