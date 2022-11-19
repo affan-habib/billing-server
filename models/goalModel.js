@@ -19,6 +19,19 @@ const goalSchema = mongoose.Schema(
       type: Number,
       required: [true, 'Please add a tariffBaseAmount value'],
     },
+    discountAmount: {
+      type: Number,
+      required: [true, 'Please add a discountAmount value'],
+    },
+    vatPerUnit: {
+      type: Number,
+      required: [true, 'Please add a vatPerUnit value'],
+    },
+    expiryDate: {
+      type: Number,
+      required: [true, 'Please add a expiryDate value'],
+    },
+
   },
   {
     timestamps: true,

@@ -23,9 +23,12 @@ const setGoal = asyncHandler(async (req, res) => {
 
   const goal = await Goal.create({
     id: req.body.id,
+    user: req.user.id,
     masterServiceName: req.body.masterServiceName,
     tariffBaseAmount: req.body.tariffBaseAmount,
-    user: req.user.id,
+    discountAmount: req.body.discountAmount,
+    expiryDate: req.body.expiryDate,
+    vatPerUnit: req.body.vatPerUnit,
   });
 
   res.status(200).json(goal);
