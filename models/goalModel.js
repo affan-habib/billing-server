@@ -7,13 +7,17 @@ const goalSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    text: {
+    id: {
       type: String,
-      required: [true, 'Please add a text value'],
+      required: [true, 'Please add a id value'],
     },
-    price: {
+    masterServiceName: {
+      type: String,
+      required: [true, 'Please add a masterServiceName value'],
+    },
+    tariffBaseAmount: {
       type: Number,
-      required: [true, 'Please add a text value'],
+      required: [true, 'Please add a tariffBaseAmount value'],
     },
   },
   {
