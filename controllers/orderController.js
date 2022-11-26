@@ -27,12 +27,13 @@ const setOrder = asyncHandler(async (req, res) => {
   const order = await Order.create({
     patientId: req.body.patientId,
     discount: req.body.discount,
+    advance: req.body.advance,
     total: total,
-    due: total - req.body.discount,
+    due: total - req.body.discount - req.body.advance,
     orderDetailList: req.body.orderDetailList,
   });
 
-  res.status(200).json(order);
+  res.status(200).json({ data: order });
 });
 
 // @desc    Update order

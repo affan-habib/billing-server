@@ -12,6 +12,9 @@ const orderSchema = mongoose.Schema(
     discount: {
       type: Number,
     },
+    advance: {
+      type: Number,
+    },
     due: {
       type: Number,
     },
