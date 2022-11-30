@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
-   
     patientId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Customer',
     },
     total: {
       type: Number,
