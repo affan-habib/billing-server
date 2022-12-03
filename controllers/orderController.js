@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 
 const Order = require("../models/orderModel");
 const User = require("../models/userModel");
+const Customer = require("../models/customerModel");
 
 // @desc    Get orders
 // @route   GET /api/orders
@@ -32,8 +33,13 @@ const setOrder = asyncHandler(async (req, res) => {
     due: total - req.body.discount - req.body.advance,
     orderDetailList: req.body.orderDetailList,
   });
-
-  res.status(200).json({ data: order });
+  const customer = await Customer.find({ _id: req.body.patientId });
+  if (!customer.length) {
+    res.status(400);
+    throw new Error("Please add a id field");
+  }
+  console.log(customer);
+  res.status(200).json({ data: order, customer: customer[0] });
 });
 
 // @desc    Update order
