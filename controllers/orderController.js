@@ -17,7 +17,7 @@ const getOrders = asyncHandler(async (req, res) => {
 // @route   POST /api/orders
 // @access  Private
 const setOrder = asyncHandler(async (req, res) => {
-  if (!req.body.patientId) {
+  if (!req.body.customerId) {
     res.status(400);
     throw new Error("Please add a name field");
   }
@@ -26,14 +26,14 @@ const setOrder = asyncHandler(async (req, res) => {
     0
   );
   const order = await Order.create({
-    patientId: req.body.patientId,
+    customerId: req.body.customerId,
     discount: req.body.discount,
     advance: req.body.advance,
     total: total,
     due: total - req.body.discount - req.body.advance,
     orderDetailList: req.body.orderDetailList,
   });
-  const customer = await Customer.find({ _id: req.body.patientId });
+  const customer = await Customer.find({ _id: req.body.customerId });
   if (!customer.length) {
     res.status(400);
     throw new Error("Please add a id field");
