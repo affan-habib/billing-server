@@ -22,7 +22,7 @@ const setOrder = asyncHandler(async (req, res) => {
     throw new Error("Please add a name field");
   }
   const total = req.body.orderDetailList.reduce(
-    (a, b) => a + b.tariffBaseAmount * b.quantityOrdered,
+    (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
   const order = await Order.create({

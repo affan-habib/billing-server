@@ -16,16 +16,16 @@ const getGoals = asyncHandler(async (req, res) => {
 // @route   POST /api/goals
 // @access  Private
 const setGoal = asyncHandler(async (req, res) => {
-  if (!req.body.masterServiceName) {
+  if (!req.body.serviceName) {
     res.status(400);
-    throw new Error("Please add a masterServiceName field");
+    throw new Error("Please add a serviceName field");
   }
 
   const goal = await Goal.create({
     id: req.body.id,
     user: req.user.id,
-    masterServiceName: req.body.masterServiceName,
-    tariffBaseAmount: req.body.tariffBaseAmount,
+    serviceName: req.body.serviceName,
+    basePrice: req.body.basePrice,
     discountAmount: req.body.discountAmount,
     expiryDate: req.body.expiryDate,
     vatPerUnit: req.body.vatPerUnit,

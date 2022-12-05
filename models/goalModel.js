@@ -11,13 +11,13 @@ const goalSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a id value'],
     },
-    masterServiceName: {
+    serviceName: {
       type: String,
-      required: [true, 'Please add a masterServiceName value'],
+      required: [true, 'Please add a serviceName value'],
     },
-    tariffBaseAmount: {
+    basePrice: {
       type: Number,
-      required: [true, 'Please add a tariffBaseAmount value'],
+      required: [true, 'Please add a basePrice value'],
     },
     discountAmount: {
       type: Number,
