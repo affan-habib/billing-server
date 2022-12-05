@@ -26,7 +26,7 @@ const setGoal = asyncHandler(async (req, res) => {
     user: req.user.id,
     serviceName: req.body.serviceName,
     basePrice: req.body.basePrice,
-    discountAmount: req.body.discountAmount,
+    discountPerUnit: req.body.discountPerUnit,
     expiryDate: req.body.expiryDate,
     vatPerUnit: req.body.vatPerUnit,
   });
