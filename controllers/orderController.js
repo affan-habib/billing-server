@@ -25,21 +25,27 @@ const setOrder = asyncHandler(async (req, res) => {
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
-  const order = await Order.create({
-    customerId: req.body.customerId,
-    discount: req.body.discount,
-    advance: req.body.advance,
-    total: total,
-    due: total - req.body.discount - req.body.advance,
-    orderDetailList: req.body.orderDetailList,
-  });
+
   const customer = await Customer.find({ _id: req.body.customerId });
   if (!customer.length) {
     res.status(400);
     throw new Error("Please add a id field");
+  } else {
+    const order = await Order.create({
+      customerId: req.body.customerId,
+      discount: req.body.discount,
+      advance: req.body.advance,
+      total: total,
+      due: total - req.body.discount - req.body.advance,
+      orderDetailList: req.body.orderDetailList,
+      name: customer[0].name,
+      age: customer[0].age,
+      gender: customer[0].gender,
+      contactNumber: customer[0].contactNumber,
+    });
+    res.status(200).json({ data: order, customer: customer[0] });
   }
   console.log(customer);
-  res.status(200).json({ data: order, customer: customer[0] });
 });
 
 // @desc    Update order
