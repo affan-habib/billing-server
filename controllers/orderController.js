@@ -63,7 +63,7 @@ const deleteOrder = asyncHandler(async (req, res) => {
 
   await order.remove();
 
-  res.status(200).json({ data: { id: req.params.id } });
+  res.status(200).json({ data: order });
 });
 
 module.exports = {
