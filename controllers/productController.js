@@ -61,7 +61,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 // @route   DELETE /api/goals/:id
 // @access  Private
 const deleteProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.find({ _id: req.params.id });
 
   if (!product) {
     res.status(400);
@@ -82,7 +82,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   await product.remove();
 
-  res.status(200).json({ id: req.params.id });
+  res.status(200).json({ data: { id: req.params.id } });
 });
 
 module.exports = {

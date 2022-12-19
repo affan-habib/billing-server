@@ -2,13 +2,25 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
-    customerId: {
+    invoiceId: {
+      type: String,
+      required: [true, "Please add a id value"],
+    },
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "User",
+    },
+    customerId: {
+      type: String,
       ref: "Customer",
     },
     name: {
       type: String,
+    },
+    contactNumber: {
+      type: String,
+      required: [true, "Please add a contactNumber value"],
     },
     age: {
       type: Number,
@@ -16,22 +28,23 @@ const orderSchema = mongoose.Schema(
     gender: {
       type: String,
     },
-    contactNumber: {
-      type: String,
+    paid: {
+      type: Boolean,
+      default: true,
     },
-    total: {
+    itemTotal: {
       type: Number,
+      default: 0,
     },
-    discount: {
+    discountAmount: {
       type: Number,
+      default: 0,
     },
-    advance: {
+    paidAmount: {
       type: Number,
+      default: 0,
     },
-    due: {
-      type: Number,
-    },
-    orderDetailList: {
+    itemList: {
       type: Array,
     },
   },
