@@ -7,7 +7,7 @@ const User = require("../models/userModel");
 // @route   GET /api/customers
 // @access  Private
 const getCustomers = asyncHandler(async (req, res) => {
-  const customers = await Customer.find({ user: req.user.id });
+  const customers = await Customer.find({ user: req.userId });
 
   res.status(200).json({ data: customers });
 });
