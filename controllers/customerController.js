@@ -92,7 +92,7 @@ const deleteCustomer = asyncHandler(async (req, res) => {
 
   await customer.remove();
 
-  res.status(200).json({ id: req.params.id });
+  res.status(200).json({ data: customer });
 });
 
 module.exports = {

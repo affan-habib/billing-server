@@ -54,14 +54,14 @@ const updateProduct = asyncHandler(async (req, res) => {
     }
   );
 
-  res.status(200).json(updatedProduct);
+  res.status(200).json({ data: updatedProduct });
 });
 
 // @desc    Delete product
 // @route   DELETE /api/goals/:id
 // @access  Private
 const deleteProduct = asyncHandler(async (req, res) => {
-  const product = await Product.find({ _id: req.params.id });
+  const product = await Product.findById(req.params.id);
 
   if (!product) {
     res.status(400);
