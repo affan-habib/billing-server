@@ -1,5 +1,5 @@
-const path = require('path');
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorMiddleware');
@@ -8,17 +8,15 @@ const port = process.env.PORT || 5000;
 
 connectDB();
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/v1/service-master/items", require("./routes/goalRoutes"));
-app.use("/api/customers", require("./routes/customerRoutes"));
-app.use("/api/orders", require("./routes/orderRoutes"));
-app.use("/api/users", require("./routes/userRoutes"));
+app.use('/api/v1/service-master/items', require('./routes/goalRoutes'));
+app.use('/api/customers', require('./routes/customerRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
-// Serve frontend
 
 app.use(errorHandler);
 

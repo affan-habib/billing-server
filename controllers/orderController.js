@@ -35,7 +35,7 @@ const setOrder = asyncHandler(async (req, res) => {
       customerId: req.body.customerId,
       discount: req.body.discount,
       advance: req.body.advance,
-      total: total,
+      total: total || 0,
       due: total - req.body.discount - req.body.advance,
       orderDetailList: req.body.orderDetailList,
       name: customer[0].name,
