@@ -67,18 +67,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 
-  // Check for user
-  if (!req.user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
-  // Make sure the logged in user matches the product user
-  if (product.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-
   await product.remove();
 
   res.status(200).json({ data: { id: req.params.id } });
