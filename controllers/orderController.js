@@ -1,56 +1,31 @@
 const asyncHandler = require("express-async-handler");
 
 const Order = require("../models/orderModel");
-const User = require("../models/userModel");
-const Customer = require("../models/customerModel");
 
-// @desc    Get orders
-// @route   GET /api/orders
-// @access  Private
 const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user.id });
 
   res.status(200).json({ data: orders });
 });
 
-// @desc    Set order
-// @route   POST /api/orders
-// @access  Private
 const setOrder = asyncHandler(async (req, res) => {
-  if (!req.body.customerId) {
-    res.status(400);
-    throw new Error("Please add a name field");
-  }
-  const total = req.body.orderDetailList.reduce(
-    (a, b) => a + b.basePrice * b.quantityOrdered,
-    0
-  );
-
-  const customer = await Customer.find({ _id: req.body.customerId });
-  if (!customer.length) {
-    res.status(400);
-    throw new Error("Please add a id field");
-  } else {
-    const order = await Order.create({
-      customerId: req.body.customerId,
-      discount: req.body.discount,
-      advance: req.body.advance,
-      total: total || 0,
-      due: total - req.body.discount - req.body.advance,
-      orderDetailList: req.body.orderDetailList,
-      name: customer[0].name,
-      age: customer[0].age,
-      gender: customer[0].gender,
-      contactNumber: customer[0].contactNumber,
-    });
-    res.status(200).json({ data: order, customer: customer[0] });
-  }
-  console.log(customer);
+  const order = await Order.create({
+    invoiceId: req.body.invoiceId,
+    customerId: req.body.customerId,
+    name: req.body.name,
+    contactNumber: req.body.contactNumber,
+    age: req.body.age,
+    gender: req.body.gender,
+    user: req.user.id,
+    itemTotal: req.body.itemTotal,
+    discountAmount: req.body.discountAmount,
+    paidAmount: req.body.paidAmount,
+    dueAmount: req.body.dueAmount,
+    itemList: req.body.itemList,
+  });
+  res.status(200).json({ data: order });
 });
 
-// @desc    Update order
-// @route   PUT /api/orders/:id
-// @access  Private
 const updateOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
@@ -78,9 +53,6 @@ const updateOrder = asyncHandler(async (req, res) => {
   res.status(200).json(updatedOrder);
 });
 
-// @desc    Delete order
-// @route   DELETE /api/orders/:id
-// @access  Private
 const deleteOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 

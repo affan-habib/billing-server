@@ -4,17 +4,17 @@ const cors = require('cors');
 const { errorHandler } = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db');
 const port = process.env.PORT || 5000;
-
+const dotenv = require('dotenv').config();
 connectDB();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/v1/service-master/items', require('./routes/goalRoutes'));
+app.use('/api/products', require('./routes/goalRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
 app.use('/api/orders', require('./routes/billRoutes'));
-app.use('/api/users', require('./routes/userRoutes'));
+app.use('/auth', require('./routes/userRoutes'));
 
 
 app.use(errorHandler);
