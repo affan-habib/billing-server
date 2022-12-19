@@ -40,12 +40,6 @@ const updateOrder = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  // Make sure the logged in user matches the order user
-  if (order.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-
   const updatedOrder = await Order.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
@@ -65,12 +59,6 @@ const deleteOrder = asyncHandler(async (req, res) => {
   if (!req.user) {
     res.status(401);
     throw new Error("User not found");
-  }
-
-  // Make sure the logged in user matches the order user
-  if (order.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
   }
 
   await order.remove();
