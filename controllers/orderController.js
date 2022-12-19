@@ -16,7 +16,6 @@ const setOrder = asyncHandler(async (req, res) => {
     contactNumber: req.body.contactNumber,
     age: req.body.age,
     gender: req.body.gender,
-    user: req.user.id,
     itemTotal: req.body.itemTotal,
     discountAmount: req.body.discountAmount,
     paidAmount: req.body.paidAmount,

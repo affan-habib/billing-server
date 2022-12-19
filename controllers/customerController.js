@@ -22,7 +22,6 @@ const setCustomer = asyncHandler(async (req, res) => {
 
   const customer = await Customer.create({
     id: req.body.id,
-    user: req.user.id,
     name: req.body.name,
     age: req.body.age,
     gender: req.body.gender,

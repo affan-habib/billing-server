@@ -15,14 +15,13 @@ const setProduct = asyncHandler(async (req, res) => {
 
   const product = await Product.create({
     id: req.body.id,
-    user: req.user.id,
+    user: req._id,
     serviceName: req.body.serviceName,
     basePrice: req.body.basePrice,
     discountPerUnit: req.body.discountPerUnit,
     expiryDate: req.body.expiryDate,
     vatPerUnit: req.body.vatPerUnit,
   });
-
   res.status(200).json(product);
 });
 
