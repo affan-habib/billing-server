@@ -55,12 +55,6 @@ const deleteOrder = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 
-  // Check for user
-  if (!req.user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
   await order.remove();
 
   res.status(200).json({ data: order });
