@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/service-master/items', require('./routes/goalRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
-app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/orders', require('./routes/billRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 
 
