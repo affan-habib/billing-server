@@ -33,18 +33,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 
-  // Check for user
-  if (!req.user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
-  // Make sure the logged in user matches the product user
-  if (product.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-
   const updatedProduct = await Product.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -52,13 +40,9 @@ const updateProduct = asyncHandler(async (req, res) => {
       new: true,
     }
   );
-
   res.status(200).json({ data: updatedProduct });
 });
 
-// @desc    Delete product
-// @route   DELETE /api/goals/:id
-// @access  Private
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 

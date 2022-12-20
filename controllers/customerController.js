@@ -11,9 +11,6 @@ const getCustomers = asyncHandler(async (req, res) => {
   res.status(200).json({ data: customers });
 });
 
-// @desc    Set customer
-// @route   POST /api/customers
-// @access  Private
 const setCustomer = asyncHandler(async (req, res) => {
   if (!req.body.name) {
     res.status(400);
@@ -40,18 +37,6 @@ const updateCustomer = asyncHandler(async (req, res) => {
   if (!customer) {
     res.status(400);
     throw new Error("Customer not found");
-  }
-
-  // Check for user
-  if (!req.user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
-  // Make sure the logged in user matches the customer user
-  if (customer.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
   }
 
   const updatedCustomer = await Customer.findByIdAndUpdate(
