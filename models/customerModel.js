@@ -9,23 +9,30 @@ const customerSchema = mongoose.Schema(
     },
     id: {
       type: String,
-      required: [true, "Please add a id value"],
+      required: [true, "Please add id"],
     },
     name: {
       type: String,
-      required: [true, "Please add a name value"],
+      required: [true, "Please add name"],
     },
     age: {
       type: Number,
-      required: [true, "Please add a age value"],
+      required: [true, "Please addge"],
     },
     gender: {
       type: String,
-      required: [true, "Please add a gender value"],
+      required: [true, "Please add Gender"],
     },
     contactNumber: {
       type: String,
-      required: [true, "Please add a contactNumber value"],
+      required: [true, "Please add Contact Number"],
+    },
+    isCorporate: {
+      type: Boolean,
+      default: false,
+    },
+    address: {
+      type: String,
     },
   },
   {

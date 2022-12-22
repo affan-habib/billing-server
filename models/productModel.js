@@ -9,27 +9,31 @@ const productSchema = mongoose.Schema(
     },
     id: {
       type: String,
-      required: [true, "Please add a id value"],
+      required: [true, "Please add id"],
+    },
+    category: {
+      type: String,
+      required: [true, "Please add Category"],
     },
     serviceName: {
       type: String,
-      required: [true, "Please add a serviceName value"],
+      required: [true, "Please add serviceName"],
     },
     basePrice: {
       type: Number,
-      required: [true, "Please add a basePrice value"],
+      required: [true, "Please add basePrice"],
     },
     discountPerUnit: {
       type: Number,
-      required: [true, "Please add a discountPerUnit value"],
+      required: [true, "Please add discountPerUnit"],
     },
     vatPerUnit: {
       type: Number,
-      required: [true, "Please add a vatPerUnit value"],
+      required: [true, "Please add vatPerUnit"],
     },
     expiryDate: {
       type: Number,
-      required: [true, "Please add a expiryDate value"],
+      required: [true, "Please add expiryDate"],
     },
   },
   {

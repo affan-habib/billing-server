@@ -4,7 +4,7 @@ const orderSchema = mongoose.Schema(
   {
     invoiceId: {
       type: String,
-      required: [true, "Please add a id value"],
+      required: [true, "Please add id"],
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,10 @@ const orderSchema = mongoose.Schema(
     },
     contactNumber: {
       type: String,
-      required: [true, "Please add a contactNumber value"],
+      required: [true, "Please add Contact Number"],
+    },
+    address: {
+      type: String,
     },
     age: {
       type: Number,

@@ -10,13 +10,14 @@ const getProducts = asyncHandler(async (req, res) => {
 const setProduct = asyncHandler(async (req, res) => {
   if (!req.body.serviceName) {
     res.status(400);
-    throw new Error("Please add a serviceName field");
+    throw new Error("Please add serviceName field");
   }
 
   const product = await Product.create({
     id: req.body.id,
     user: req._id,
     serviceName: req.body.serviceName,
+    category: req.body.category,
     basePrice: req.body.basePrice,
     discountPerUnit: req.body.discountPerUnit,
     expiryDate: req.body.expiryDate,

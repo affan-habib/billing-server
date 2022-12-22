@@ -14,7 +14,7 @@ const getCustomers = asyncHandler(async (req, res) => {
 const setCustomer = asyncHandler(async (req, res) => {
   if (!req.body.name) {
     res.status(400);
-    throw new Error("Please add a name field");
+    throw new Error("Please add name field");
   }
 
   const customer = await Customer.create({
@@ -23,6 +23,8 @@ const setCustomer = asyncHandler(async (req, res) => {
     age: req.body.age,
     gender: req.body.gender,
     contactNumber: req.body.contactNumber,
+    address: req.body.address,
+    isCorporate: req.body.isCorporate,
   });
 
   res.status(200).json(customer);
